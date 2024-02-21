@@ -92,9 +92,9 @@ const App = () => {
               <Text>project1: </Text>
             </View>
           )}
-          {currentSection === 'project1' && (
+          {currentSection === 'project2' && (
             <View>
-              <Text>project1: </Text>
+              <Text>project2: </Text>
             </View>
           )}
           {currentSection === 'contact' && (
@@ -108,6 +108,19 @@ const App = () => {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  contentContainer: {
+    alignItems: 'center',
+    maxWidth: 600,
+  }
+})
 
 
 export default App;
