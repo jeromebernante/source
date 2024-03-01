@@ -1,3 +1,7 @@
+<?php
+include('connection.php')
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +16,14 @@
         $userid = $_GET['edit'];
         $username = $_GET['username'];
     }
-    
 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $userid = $_POST['userid'];
+        $username = $_POST['username'];
+        $sql = "UPDATE tbl_user SET username = '$username' WHERE userid = $userid";
+        mysqli_query($conn, $sql);
+        header('Location: index.php');
+    }
 ?>
 <body>
     <div class="container">
@@ -24,14 +34,11 @@
             </div>
         </header>
         <main>
-            <form>
+            <form method="POST">
+                <input type="hidden" name="userid" value="<?php echo $userid?>">
                 <div class="mb-3">
                     <label for="" class="form-label">Username</label>
-                    <input type="email" class="form-control" id="" value="<?php echo $username?>">
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">New Password</label>
-                    <input type="password" class="form-control" id="">
+                    <input name="username" type="text" class="form-control" id="" value="<?php echo $username?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
